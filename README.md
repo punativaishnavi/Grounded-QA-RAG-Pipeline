@@ -1,4 +1,4 @@
-# grounded-qa-pipeline
+# Grounded-QA-RAG-Pipeline
 
 End-to-end Retrieval-Augmented Generation (RAG) pipeline in Python —
 from raw documents to grounded answers, with retrieval evaluation.
@@ -84,7 +84,7 @@ The prompt template lives in `config/config.yaml` (`generate.prompt_template`).
 ## Project structure
 
 ```
-grounded-qa-pipeline/
+Grounded-QA-RAG-Pipeline/
 ├── config/config.yaml        # all knobs in one place
 ├── data/
 │   ├── docs/                 # sample knowledge base (RAG concepts)
