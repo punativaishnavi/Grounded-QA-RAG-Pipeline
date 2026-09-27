@@ -39,7 +39,6 @@ class VectorStore:
             texts=np.array([c.text for c in self.chunks]),
             sources=np.array([c.source for c in self.chunks]),
             chunk_ids=np.array([c.chunk_id for c in self.chunks]),
-        # PAREN_PLACEHOLDER
         )
         log.info("Index saved to %s (%d vectors)", path, len(self.chunks))
 
