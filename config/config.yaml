@@ -1,0 +1,48 @@
+ingest:
+  docs_dir: "data/docs"
+  supported_exts: [".txt", ".md", ".pdf"]
+
+chunking:
+  chunk_size: 600
+  chunk_overlap: 120
+
+embeddings:
+  backend: "sbert"   # sbert (dense, best quality) | tfidf (lightweight, no downloads)
+  model: "all-MiniLM-L6-v2"
+  batch_size: 32
+  normalize: true
+
+index:
+  path: "data/index/faiss_like.npz"
+
+retrieval:
+  top_k: 4
+
+generate:
+  backend: "extractive"   # extractive | ollama | openai
+  model: "llama3.1"       # ollama model / openai model id
+  ollama_url: "http://localhost:11434"
+  max_chunks_in_prompt: 4
+  prompt_template: |
+    Answer the question using ONLY the context below. If the answer is not in the
+    context, say "I don't know based on the provided documents."
+
+    Context:
+    {context}
+
+    Question: {question}
+
+    Answer:
+
+evaluate:
+  qa_pairs:
+    - question: "What is retrieval-augmented generation?"
+      expected_source: "01-rag-overview.md"
+    - question: "Why do we split documents into chunks?"
+      expected_source: "02-chunking.md"
+    - question: "How do embeddings represent text meaning?"
+      expected_source: "03-embeddings.md"
+    - question: "What is the difference between dense and sparse retrieval?"
+      expected_source: "04-vector-search.md"
+    - question: "Which metrics are used to evaluate a RAG system?"
+      expected_source: "05-evaluation.md"
